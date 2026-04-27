@@ -47,14 +47,7 @@ def compare():
             "user": "tester"
         }
         
-        # --- 关键修改：手动指定代理 (假设你的端口是 7890) ---
-        proxies = {
-            "http": "http://127.0.0.1:7897",
-            "https": "http://127.0.0.1:7897",
-        }
-        
-        # 在 post 请求中加上 proxies 参数
-        res = requests.post(url, headers=headers, json=data, proxies=proxies, timeout=120)
+        res = requests.post(url, headers=headers, json=data, timeout=120)
         # -----------------------------------------------
 
         if res.status_code == 200:
