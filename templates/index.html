@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber-Soloist | 独居赛道爆款生成工作台 </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans SC', sans-serif; background-color: #f8fafc; }
+        .gradient-text { background: linear-gradient(90deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .comparison-card { transition: all 0.3s ease; }
+        .comparison-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="p-4 md:p-12">
+    <!-- Header -->
+    <header class="max-w-6xl mx-auto mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Cyber-Soloist</h1>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            基于垂直赛道语料库的 RAG 增强生成系统，深度复刻小红书爆款内容的底层情绪与叙事逻辑。
+        </p>
+    </header>
+
+    <!-- 项目介绍 Section -->
+    <section class="max-w-6xl mx-auto mb-16 grid md:grid-cols-3 gap-8 text-sm">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-purple-600 mb-2">📦 语料资产</h3>
+            <p class="text-gray-500">爬取并清洗小红书 500+ 高热度真实爆款语料，剔除无效杂质。</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-purple-600 mb-2">🏷️ 深度标注</h3>
+            <p class="text-gray-500">引入 Hook/Structure/Emotion 三维特征标注，实现从文本检索到逻辑检索的进化。</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-purple-600 mb-2">⚙️ 架构优化</h3>
+            <p class="text-gray-500">集成 Hybrid Search 与 BGE-M3 重排序模型，精准捕获长文本中的情绪锚点。</p>
+        </div>
+    </section>
+
+    <!-- 静态示例对比 (Fixed Comparison) -->
+    <section class="max-w-6xl mx-auto mb-20">
+        <h2 class="text-2xl font-bold mb-8 flex items-center">
+            <span class="bg-purple-600 w-2 h-8 rounded-full mr-3"></span>
+        案例对比
+        </h2>
+        <div class="bg-purple-50 p-4 rounded-t-xl text-purple-700 font-medium border-x border-t border-purple-100">
+            输入选题：我想写一篇关于独居女生第一次自己换灯泡，感觉自己变强大了的笔记。
+        </div>
+        <div class="grid md:grid-cols-2 gap-0 border-x border-b border-gray-200 rounded-b-xl overflow-hidden shadow-sm">
+            <!-- 普通 DeepSeek 结果 -->
+            <div class="p-8 bg-gray-50 border-r border-gray-200">
+                <div class="flex items-center mb-6 text-gray-400">
+                    <span class="font-bold text-xs uppercase tracking-widest">Control Group</span>
+                    <span class="ml-2 px-2 py-1 bg-gray-200 rounded text-[15px]">通用 DeepSeek-V3</span>
+                </div>
+                <div class="text-gray-600 leading-relaxed text-sm whitespace-pre-wrap">
+💡独居女生的第一次换灯泡，我终于是个能独自生存的大人了！
+
+以前遇到换灯泡这种事
+第一反应都是找爸爸、找男朋友、找物业大哥
+但今天 我要自己动手了！👊
+
+买灯泡的时候还特意问老板
+要不要买那种带螺口的老式灯泡比较好拧
+老板笑着说：小姑娘放心 现在都是标准口 好换
+
+回家站上凳子的时候
+腿稍微有点抖（暴露了）
+然后照着教程
+断电、拧灯泡、对准、拧紧
+真的就这么简单！🙈
+
+开灯的时候差点给自己鼓掌
+那种成就感 谁懂啊！
+原来这种以为很麻烦的事情
+做完了反而觉得格外爽！！！
+
+有姐妹说自己独居三年多了
+到现在还没换过灯泡
+我想说：真的不用怕！试试看！
+你比你自己想象中厉害多了！✨
+
+#独居女孩的快乐日常 #独居生活 #成长日记 #独居女孩 #第一次换灯泡
+                </div>
+            </div>
+            <!-- Cyber-Soloist 结果 -->
+            <div class="p-8 bg-white">
+                <div class="flex items-center mb-6 text-purple-600">
+                    <span class="font-bold text-xs uppercase tracking-widest text-purple-600">Experimental Group</span>
+                    <span class="ml-2 px-2 py-1 bg-purple-100 rounded text-[15px]">Cyber-Soloist (RAG+)</span>
+                </div>
+                <div class="text-gray-800 leading-relaxed text-sm whitespace-pre-wrap">
+📚【 看了这几篇爆款 】
+📌 1.《第一次换灯泡 我哭得像个200斤的孩子》- 点赞8.2w+亮点：（换完灯整个人亮了！）
+📌 2.《独居第3年 我学会了修马桶》-点赞5.6w+亮点：（扳手比口红香多了）
+📌 3.《女生换锁实录 师傅都夸我牛逼》-点赞3.9w+亮点：（省了200块人工费）
+
+💡【 为什么这几篇会火 】
+💡 逻辑：把生活小事拍成热血番！谁不喜欢看菜鸟变大神啊
+💡 情绪：又菜又爱玩的成就感 笑中带泪的成长故事
+
+💡【 标题建议 】
+1️⃣ 谁懂啊！！女生换灯泡真的会发光✨
+2️⃣ 救命…独居换灯泡把自己帅哭了💡
+3️⃣ 安利这个爽到上头的运动：换灯泡🏋️‍♀️
+
+📝【 咱也按这个套路来写 】
+▪️ 开头钩子：[换完灯泡那刻 我觉得自己能征服火星！！]
+▪️ 细节描写：[踩着摇摇晃晃的椅子 拧灯泡手都在抖]
+▪️ 结尾金句：[原来让我发光的不是灯泡 是勇敢的自己呀]
+
+🔥【 爆款成品文案 】
+📸【 图片建议 】：
+1.封面图内容(摇摇欲坠的椅子+新灯泡特写对比)；
+2.配图内容(满脸灰尘但举着旧灯泡傻笑)；
+3.配图内容(灯光亮起时拍的影子自拍)。
+
+📖【 笔记正文 】：
+谁懂啊！！第一次换灯泡比初恋还紧张💗
+踩在塑料凳上抖得像筛糠 螺丝刀都快拿不稳了…
+拧下来的旧灯泡都是灰 我打喷嚏打到邻居来敲门😷
+装新灯泡转了20圈都没亮 急得差点打119！！
+结果发现是开关没开…（别骂了）🤡
+灯亮那瞬间真的绝了！！觉得整个小区都该给我鼓掌👏
+原来让我发光的不是40瓦的灯泡 是200%勇敢的自己呀✨
+
+🏷️【 推荐标签 】
+#独居女性成长记 #生活技能加分 #女生自救指南 #独居必备技能 #女性力量 #生活小成就 #租房改造
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实时实验室 (Live Experiment) -->
+    <section class="max-w-6xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8 flex items-center">
+            <span class="bg-indigo-600 w-2 h-8 rounded-full mr-3"></span>
+            实时效果呈现
+        </h2>
+        <div class="mb-8">
+            <div class="flex gap-4">
+                <input id="user-input" type="text" placeholder="输入您的内容选题..." class="flex-1 p-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm">
+                <button onclick="runComparison()" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg">生成对比</button>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm min-h-[300px]">
+                <div class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase">DeepSeek-V3 Output</div>
+                <div id="output-ds" class="text-gray-600 text-sm whitespace-pre-wrap">等待输出...</div>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm min-h-[300px]">
+                <div class="text-xs font-bold text-indigo-400 mb-4 tracking-widest uppercase">Cyber-Soloist Output</div>
+                <div id="output-rag" class="text-gray-800 text-sm whitespace-pre-wrap font-medium">等待输出...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="max-w-6xl mx-auto mt-20 py-8 border-t border-gray-100 text-center text-gray-400 text-xs">
+        Cyber-Soloist | 个人AI学习练习作品 | 2026
+    </footer>
+<style>
+    /* 1. 基础排版优化 */
+    body { 
+        font-family: 'Noto Sans SC', sans-serif; 
+        background-color: #f8fafc; 
+        color: #1e293b;
+        line-height: 1.6;
+    }
+
+    /* 2. 标题渐变色 */
+    .gradient-text { 
+        background: linear-gradient(90deg, #6366f1, #a855f7); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+    }
+
+    /* 3. 输出框核心样式：解决空格多、排版乱的问题 */
+    #output-ds, #output-rag {
+        font-size: 14.5px;
+        line-height: 1.8; /* 增加行高提升阅读感 */
+        padding: 24px;
+        border-radius: 16px;
+        min-height: 450px;
+        transition: all 0.3s ease;
+        word-break: break-all;
+        overflow-wrap: break-word;
+    }
+
+    /* 左侧：普通 DeepSeek (保持原始文本感) */
+    #output-ds {
+        background-color: #f1f5f9;
+        color: #475569;
+        white-space: pre-wrap; /* 保持换行 */
+        border: 1px solid #e2e8f0;
+    }
+
+    /* 右侧：Cyber-Soloist (专业、精美、紫色调) */
+    #output-rag {
+        background-color: #ffffff;
+        color: #1e293b;
+        border: 1px solid #ddd6fe;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    }
+    
+
+    /* 4. 针对 Marked.js 渲染出的 HTML 进行深度排版优化 */
+    #output-rag h1, #output-rag h2, #output-rag h3 {
+        color: #6d28d9;
+        font-weight: 700;
+        margin-top: 1.2em;
+        margin-bottom: 0.6em;
+        display: block;
+    }
+
+    #output-rag p {
+        margin-bottom: 0.6em; /* 压缩段落间距，解决空行过多的问题 */
+    }
+
+    #output-rag ul, #output-rag ol {
+        margin-left: 1.2em;
+        margin-bottom: 1em;
+    }
+
+    #output-rag li {
+        margin-bottom: 0.4em;
+    }
+
+    #output-rag strong {
+        color: #4f46e5;
+    }
+
+    /* 自定义滚动条 */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+
+    @media (max-width: 768px) {
+        body { padding: 1rem; }
+        .grid { gap: 1rem; }
+    }
+    /* 定义一个强力倾斜类，专门给正文使用 */
+    .italic-body {
+        display: block;
+        transform: skewX(-15deg); /* 强行倾斜 15 度 */
+        transform-origin: left top;
+        font-style: normal;
+        margin-top: 10px;
+    }
+</style>
+
+<!-- 5. JavaScript 业务逻辑：连接后端与处理渲染 -->
+<script>
+    async function runComparison() {
+        console.log("🚀 开始执行对比生成...");
+        
+        const inputElement = document.getElementById('user-input');
+        const userQuery = inputElement.value.trim();
+        
+        if (!userQuery) {
+            alert("请输入内容选题");
+            return;
+        }
+
+        const dsBox = document.getElementById('output-ds');
+        const ragBox = document.getElementById('output-rag');
+        
+        // 界面状态初始化
+        dsBox.innerText = "DeepSeek 正在思考并生成文案...";
+        ragBox.innerText = "Cyber-Soloist 正在检索爆款语料并进行分析...";
+
+        try {
+            // 向 Flask 后端发送请求
+            const response = await fetch('/compare', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: userQuery })
+            });
+
+            if (!response.ok) throw new Error("后端服务响应异常");
+
+            const data = await response.json();
+            console.log("✅ 收到后端响应数据");
+
+            // 渲染左侧：普通文本
+            dsBox.innerText = data.deepseek || "DeepSeek 未返回内容";
+            
+            // 渲染右侧：使用 Marked.js 将 Markdown 转为美观的 HTML
+    
+// 1. 提取原始数据，如果为空则赋予“未返回内容”的默认值
+              
+// 渲染右侧：使用 Marked.js 将 Markdown 转为美观的 HTML
+let content = data.cyber_soloist || "Cyber-Soloist 未返回内容";
+
+// 将“📖【 笔记正文 】：”后面的内容包裹成斜体（兼容有无 marked 的情况）
+content = content.replace(
+    /(📖【 笔记正文 】：)([\s\S]+?)(?=🏷️|#|$)/g,
+    (match, prefix, body) => prefix + '<span style="font-style: italic;">' + body + '</span>'
+);
+
+if (window.marked) {
+    ragBox.innerHTML = marked.parse(content);
+} else {
+    ragBox.innerText = content;
+}
+        } catch (error) {
+            console.error("❌ 发生错误:", error);
+            dsBox.innerText = "请求失败，请确认后端服务器 (app.py) 正在运行。";
+            ragBox.innerText = "错误详情: " + error.message;
+        }
+    }
+
+    // 页面加载完成提示
+    console.log("✅ Cyber-Soloist 交互系统已就绪");
+
+        // 监听输入框的回车键事件
+    document.getElementById('user-input').addEventListener('keydown', function(event) {
+        // 判断是否按下了回车键 (Enter)
+        if (event.key === 'Enter') {
+            // 阻止默认行为（比如防止在某些情况下刷新页面）
+            event.preventDefault();
+            // 调用你已经写好的生成函数
+            runComparison();
+        }
+    });
+
+    
+    // 页面加载后的调试提示
+    console.log("✅ 键盘监听已就绪：支持回车键触发生成");
+    
+</script>
+</body>
+</html>
